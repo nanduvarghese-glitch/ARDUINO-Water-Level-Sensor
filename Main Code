@@ -1,0 +1,27 @@
+// Water Level Sensor Project
+
+const int waterSensorPin = A0;  // Sensor connected to A0
+int sensorValue = 0;
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  sensorValue = analogRead(waterSensorPin);
+
+  Serial.print("Water Level Value: ");
+  Serial.println(sensorValue);
+
+  if (sensorValue < 300) {
+    Serial.println("Water Level: LOW");
+  }
+  else if (sensorValue >= 300 && sensorValue < 600) {
+    Serial.println("Water Level: MEDIUM");
+  }
+  else {
+    Serial.println("Water Level: HIGH");
+  }
+
+  delay(1000);
+}
